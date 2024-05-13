@@ -1,4 +1,6 @@
 package binaryTrees.concepts;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 public class BinaryTreeUse {
     public static BinaryTreeNode<Integer> takeInputBinaryTree(){
@@ -42,6 +44,43 @@ public class BinaryTreeUse {
         BinaryTreeNode<Integer> root = new BinaryTreeNode<>(rootData);
         root.left = takeInputBinaryTreeBetter(false,root.data,true);
         root.right = takeInputBinaryTreeBetter(false,root.data,false);
+        return root;
+    }
+    public static BinaryTreeNode<Integer> takeInputTreeLevelWise(){
+        Scanner sc = new Scanner(System.in);
+        Queue<BinaryTreeNode<Integer>> queue = new LinkedList<>();
+        // asking for root data
+        System.out.print("Enter the root: ");
+        int rootData = sc.nextInt();
+        BinaryTreeNode<Integer> root = new BinaryTreeNode<>(rootData);
+        // adding root node to the queue
+        queue.add(root);
+        while(!queue.isEmpty()){
+            // taking out the first element of the queue, which is root of children
+            BinaryTreeNode<Integer> front = queue.poll();
+            // ask for left child data
+            System.out.print("Enter the left child of "+front.data+": ");
+            int leftChildData = sc.nextInt();
+            if(leftChildData!=-1){
+                // creating left child node
+                BinaryTreeNode<Integer> leftChild = new BinaryTreeNode<>(leftChildData);
+                // adding left child node to the queue
+                queue.add(leftChild);
+                // connecting left child to its parent node (front)
+                front.left = leftChild;
+            }
+            // asking for right child data
+            System.out.print("Enter the right child of "+front.data+": ");
+            int rightChildData = sc.nextInt();
+            if(rightChildData!=-1){
+                // creating the right child node
+                BinaryTreeNode<Integer> rightChild = new BinaryTreeNode<>(rightChildData);
+                // adding right child node to the queue
+                queue.add(rightChild);
+                // connecting right child to its parent
+                front.right = rightChild;
+            }
+        }
         return root;
     }
     public static void printBinaryTree(BinaryTreeNode<Integer> root){
@@ -96,7 +135,8 @@ public class BinaryTreeUse {
     printBinaryTree(root);
     System.out.println("-----------------------------------------------");
 //    root = takeInputBinaryTree();
-    root = takeInputBinaryTreeBetter(true,0,true);
+//    root = takeInputBinaryTreeBetter(true,0,true);
+        root = takeInputTreeLevelWise();
     printBinaryTreeDetailed(root);
 
     }
