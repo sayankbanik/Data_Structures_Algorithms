@@ -3,8 +3,8 @@ package binaryTrees.concepts;
 public class BinaryTreeNode<Type> {
     // members
     public Type data;
-    BinaryTreeNode<Type> left;
-    BinaryTreeNode<Type> right;
+    public BinaryTreeNode<Type> left;
+    public BinaryTreeNode<Type> right;
 
     //constructors
     public BinaryTreeNode(){
