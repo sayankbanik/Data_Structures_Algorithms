@@ -159,6 +159,7 @@ public class BinaryTreeUse {
         System.out.print(root.data+" ");
         inOrderTraversal(root.right);
     }
+
     public static void main(String[] args) {
         // creating the root node
         BinaryTreeNode<Integer> root = new BinaryTreeNode<>(1);
@@ -169,7 +170,7 @@ public class BinaryTreeUse {
         // connect the child nodes to the root
         root.left = rootLeft;
         root.right = rootRight;
-        // we are adding children to our sub-trees
+        // we are adding children to our subtrees
         BinaryTreeNode<Integer> left2s = new BinaryTreeNode<>(4);
         rootLeft.left = left2s;
         BinaryTreeNode<Integer> right2s = new BinaryTreeNode<>(5);
