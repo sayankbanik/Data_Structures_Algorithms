@@ -1,5 +1,9 @@
 package binaryTrees.problems;
-
+/*
+ * For a given a Binary Tree of integers, replace each of its data with the depth of the tree.
+ * Root is at depth 0, hence the root data is updated with 0. Replicate the same further going down the
+ * in the depth of the given tree.
+ */
 import binaryTrees.concepts.BinaryTreeNode;
 import binaryTrees.concepts.BinaryTreeUse;
 
