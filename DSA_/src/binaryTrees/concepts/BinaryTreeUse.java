@@ -52,6 +52,9 @@ public class BinaryTreeUse {
         // asking for root data
         System.out.print("Enter the root: ");
         int rootData = sc.nextInt();
+        // if root is -1 just return null
+        if(rootData == -1)
+            return null;
         BinaryTreeNode<Integer> root = new BinaryTreeNode<>(rootData);
         // adding root node to the queue
         queue.add(root);
@@ -108,7 +111,29 @@ public class BinaryTreeUse {
         // go to the Right sub tree
         printBinaryTreeDetailed(root.right);
     }
-
+    public static void printBinaryTreeLevelWise(BinaryTreeNode<Integer> root){
+        Queue<BinaryTreeNode<Integer>> queue = new LinkedList<>();
+        if(root!=null){
+            queue.add(root); // 1
+        }
+        while(!queue.isEmpty()){
+            BinaryTreeNode<Integer> front = queue.poll(); //1
+            System.out.print(front.data+": ");
+            if(front.left!=null){
+                queue.add(front.left);
+                System.out.print("L:"+front.left.data+", ");
+            }else{
+                System.out.print("L:"+-1+", ");
+            }
+            if(front.right!=null){
+                queue.add(front.right);
+                System.out.print("R:"+front.right.data);
+            }else{
+                System.out.print("R:"+-1+" ");
+            }
+            System.out.println();
+        }
+    }
     public static void main(String[] args) {
         // creating the root node
         BinaryTreeNode<Integer> root = new BinaryTreeNode<>(1);
@@ -137,8 +162,8 @@ public class BinaryTreeUse {
 //    root = takeInputBinaryTree();
 //    root = takeInputBinaryTreeBetter(true,0,true);
         root = takeInputTreeLevelWise();
-    printBinaryTreeDetailed(root);
-
+//    printBinaryTreeDetailed(root);
+        printBinaryTreeLevelWise(root);
     }
 
 }
