@@ -134,6 +134,31 @@ public class BinaryTreeUse {
             System.out.println();
         }
     }
+    // Tree Traversals
+    public static void preOrderTraversal(BinaryTreeNode<Integer> root){
+        if(root==null)
+            return;
+        // root -> left -> right
+        System.out.print(root.data+" ");
+        preOrderTraversal(root.left);
+        preOrderTraversal(root.right);
+    }
+    public static void postOrderTraversal(BinaryTreeNode<Integer> root){
+        if(root==null)
+            return;
+        // left -> right -> root
+        postOrderTraversal(root.left);
+        postOrderTraversal(root.right);
+        System.out.print(root.data + " ");
+    }
+    public static void inOrderTraversal(BinaryTreeNode<Integer> root){
+        if(root==null)
+            return;
+        // left -> root -> right
+        inOrderTraversal(root.left);
+        System.out.print(root.data+" ");
+        inOrderTraversal(root.right);
+    }
     public static void main(String[] args) {
         // creating the root node
         BinaryTreeNode<Integer> root = new BinaryTreeNode<>(1);
@@ -164,6 +189,13 @@ public class BinaryTreeUse {
         root = takeInputTreeLevelWise();
 //    printBinaryTreeDetailed(root);
         printBinaryTreeLevelWise(root);
+        System.out.println();
+        preOrderTraversal(root);
+        System.out.println(" ");
+        postOrderTraversal(root);
+        System.out.println();
+        inOrderTraversal(root);
+
     }
 
 }
